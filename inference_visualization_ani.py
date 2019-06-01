@@ -94,7 +94,7 @@ plt.title('Accelerometer Data')
 plt.xlabel('Seconds')
 plt.ylabel('milli-g')
 plt.legend()
-# plt.savefig(save_path+'last_input.png',dpi=100)
+plt.savefig('./last_input.png',dpi=300,bbox_inches = "tight")
 # plt.show()
 
 class AnimatedScatter(object):
