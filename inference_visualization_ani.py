@@ -16,6 +16,7 @@ parser.add_argument('--interv', type=int,default=1)
 parser.add_argument('--thresh', type=float,default=0.50)
 parser.add_argument('--smooth', type=int,default=1)
 parser.add_argument('--force_update', type=int,default=0)
+parser.add_argument('--animate', type=int,default=1)
 opt = parser.parse_args()
 # path = '/anaconda3/pkgs/tensorflow-base-1.9.0-mkl_py36h70e0e9a_0/lib/python3.6/site-packages/tensorflow/contrib/ffmpeg'
 # path = './ffmpeg'
@@ -176,19 +177,20 @@ if (prev_len != new_len or prev_len == 0) or opt.force_update:
         # line3.set_color(c=yhat[:num*opt.interv:opt.interv])
         return line1,line2,line3
     
-    #A.shape[0]//opt.interv
-    ani = animation.FuncAnimation(fig, update, A.shape[0]//opt.interv, fargs=[line1,line2,line3],
-                                  interval=1, blit=True)#, save_count=50)
-    
-    # Writer = animation.writers['ffmpeg_file']
-    # writer = Writer(fps=60, bitrate=100)
-    
-    # writer = animation.FFMpegWriter(fps=600, metadata=dict(artist='Me'), bitrate=100)
-    writer = animation.ImageMagickWriter(fps=1000)
-    
-    # writer = Writer(fps=60, metadata=dict(artist='Me'), bitrate=100)
-    
-    ani.save('./accelerometer.gif', writer=writer)
+    if opt.animate:
+        #A.shape[0]//opt.interv
+        ani = animation.FuncAnimation(fig, update, A.shape[0]//opt.interv, fargs=[line1,line2,line3],
+                                      interval=1, blit=True)#, save_count=50)
+        
+        # Writer = animation.writers['ffmpeg_file']
+        # writer = Writer(fps=60, bitrate=100)
+        
+        # writer = animation.FFMpegWriter(fps=600, metadata=dict(artist='Me'), bitrate=100)
+        writer = animation.ImageMagickWriter(fps=1000)
+        
+        # writer = Writer(fps=60, metadata=dict(artist='Me'), bitrate=100)
+        
+        ani.save('./accelerometer.gif', writer=writer)
     
     t2 = time()
     print('Time Elapsed:',(t2 - t1)/60,'minutes')
