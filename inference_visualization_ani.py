@@ -18,6 +18,7 @@ parser.add_argument('--thresh', type=float,default=0.50)
 parser.add_argument('--smooth', type=int,default=1)
 parser.add_argument('--force_update', type=int,default=0)
 parser.add_argument('--animate', type=int,default=1)
+parser.add_argument('--pillow', type=int,default=0)
 opt = parser.parse_args()
 # path = '/anaconda3/pkgs/tensorflow-base-1.9.0-mkl_py36h70e0e9a_0/lib/python3.6/site-packages/tensorflow/contrib/ffmpeg'
 # path = './ffmpeg'
@@ -188,6 +189,8 @@ if (prev_len != new_len or prev_len == 0) or opt.force_update:
         
         # writer = animation.FFMpegWriter(fps=600, metadata=dict(artist='Me'), bitrate=100)
         writer = animation.ImageMagickWriter(fps=1000)
+        if opt.pillow:
+            Writer = animation.writers['pillow']
         
         # writer = Writer(fps=60, metadata=dict(artist='Me'), bitrate=100)
         
