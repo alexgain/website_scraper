@@ -80,12 +80,12 @@ G = data[:,3:6]*70 #Gyroscope (x,y,z), mDPS
 
 #2D plot accelerometer:
 fig, ax = plt.subplots()
-# line1 = ax.scatter(np.arange(A[:,0].shape[0])*0.002403846,A[:,0],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
-# line2 = ax.scatter(np.arange(A[:,1].shape[0])*0.002403846,A[:,1],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
-# line3 = ax.scatter(np.arange(A[:,2].shape[0])*0.002403846,A[:,2],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
-line1 = ax.scatter(np.arange(A[:,0].shape[0]),A[:,0],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
-line2 = ax.scatter(np.arange(A[:,1].shape[0]),A[:,1],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
-line3 = ax.scatter(np.arange(A[:,2].shape[0]),A[:,2],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
+line1 = ax.scatter(np.arange(A[:,0].shape[0])*0.002403846,A[:,0],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
+line2 = ax.scatter(np.arange(A[:,1].shape[0])*0.002403846,A[:,1],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
+line3 = ax.scatter(np.arange(A[:,2].shape[0])*0.002403846,A[:,2],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
+# line1 = ax.scatter(np.arange(A[:,0].shape[0]),A[:,0],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
+# line2 = ax.scatter(np.arange(A[:,1].shape[0]),A[:,1],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
+# line3 = ax.scatter(np.arange(A[:,2].shape[0]),A[:,2],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
 plt.plot([], [], 'o', label='Jumping Intervals',color=colors[1])
 # plt.plot([], [], 'o', label='Running',color=colors[0])
 plt.title('Accelerometer Data')
@@ -155,11 +155,11 @@ class AnimatedScatter(object):
 # plt.savefig('accelerometer.png',dpi=1000)
 
 def update(num, line1,line2,lin3):
-    line1.set_offsets(np.array([np.arange(0,num*opt.interv),A[:,0][:num*opt.interv]]).T)
+    line1.set_offsets(np.array([np.arange(0,num*opt.interv)*0.002403846,A[:,0][:num*opt.interv]]).T)
     # line1.set_color(c=yhat[:num*opt.interv:opt.interv])
-    line2.set_offsets(np.array([np.arange(0,num*opt.interv),A[:,1][:num*opt.interv]]).T)
+    line2.set_offsets(np.array([np.arange(0,num*opt.interv)*0.002403846,A[:,1][:num*opt.interv]]).T)
     # line2.set_color(c=yhat[:num*opt.interv:opt.interv])
-    line3.set_offsets(np.array([np.arange(0,num*opt.interv),A[:,2][:num*opt.interv]]).T)
+    line3.set_offsets(np.array([np.arange(0,num*opt.interv)*0.002403846,A[:,2][:num*opt.interv]]).T)
     # line3.set_color(c=yhat[:num*opt.interv:opt.interv])
     return line1,line2,line3
 
