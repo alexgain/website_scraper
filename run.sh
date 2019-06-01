@@ -1,2 +1,2 @@
 python3 inference_visualization_ani.py
-gdrive upload --parent 1orIpfJlQeckVJvgm9-EWd3As-RnKl-KF accelerometer.gif
+gdrive update 1S17ImWj0h9AwDd7ZYq2inFpE8xrBwTTT accelerometer.gif

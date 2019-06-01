@@ -150,11 +150,11 @@ class AnimatedScatter(object):
 
 interv = 1
 def update(num, line1,line2,lin3):
-    line1.set_offsets(np.array([np.arange(0,num*interv,interv),A[:,0][:num*interv:interv]]).T)
+    line1.set_offsets(np.array([np.arange(0,num*interv),A[:,0][:num*interv]]).T)
     # line1.set_color(c=yhat[:num*interv:interv])
-    line2.set_offsets(np.array([np.arange(0,num*interv,interv),A[:,1][:num*interv:interv]]).T)
+    line2.set_offsets(np.array([np.arange(0,num*interv),A[:,1][:num*interv]]).T)
     # line2.set_color(c=yhat[:num*interv:interv])
-    line3.set_offsets(np.array([np.arange(0,num*interv,interv),A[:,2][:num*interv:interv]]).T)
+    line3.set_offsets(np.array([np.arange(0,num*interv),A[:,2][:num*interv]]).T)
     # line3.set_color(c=yhat[:num*interv:interv])
     return line1,line2,line3
 
