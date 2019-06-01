@@ -15,6 +15,7 @@ parser.add_argument('--id', type=int,default=-1)
 parser.add_argument('--interv', type=int,default=1)
 parser.add_argument('--thresh', type=float,default=0.50)
 parser.add_argument('--smooth', type=int,default=1)
+parser.add_argument('--force_update', type=int,default=0)
 opt = parser.parse_args()
 # path = '/anaconda3/pkgs/tensorflow-base-1.9.0-mkl_py36h70e0e9a_0/lib/python3.6/site-packages/tensorflow/contrib/ffmpeg'
 # path = './ffmpeg'
@@ -26,7 +27,7 @@ except:
     prev_len = 0
 
 new_len = get_len()
-if prev_len != new_len or prev_len == 0:
+if (prev_len != new_len or prev_len == 0) or opt.force_update:
     
     np.save('./prev_list_len.npy',new_len)
     
