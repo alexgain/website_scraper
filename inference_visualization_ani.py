@@ -5,7 +5,7 @@ import copy
 from time import time
 from models import *
 from utils.sampler import ImbalancedDatasetSampler, smooth
-from get_email_csvs import return_last_csv, get_len
+from get_email_csvs import return_last_csv, get_len, send_sms
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import argparse, os, sys
@@ -194,5 +194,10 @@ if (prev_len != new_len or prev_len == 0) or opt.force_update:
     
     t2 = time()
     print('Time Elapsed:',(t2 - t1)/60,'minutes')
+    
+    # try:
+    send_sms()
+    # except:
+    #     "SMS sending failed."
     
     

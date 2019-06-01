@@ -2,6 +2,7 @@ import numpy as np
 import email, getpass, imaplib, os, re
 import matplotlib.pyplot as plt
 import re
+import time
 
 def return_last_csv(id_ = -1):
     def get_urls(string):
@@ -73,4 +74,29 @@ def get_len():
                 continue
         
     return len(urls)
+
+
+def send_sms():
+    user = 'alexzgain'
+    pwd = 'Shoogiebaba23'
+    
+    m = imaplib.IMAP4_SSL("imap.gmail.com")
+    m.login(user, pwd)
+    
+    new_message = email.message.Message()
+    new_message["From"] = "alexzgain@gmail.com"
+    new_message["Subject"] = "SMS Message"
+    new_message.set_payload("Website has been updated.")
+    
+    m.append('INBOX', '', imaplib.Time2Internaldate(time.time()), str(new_message))
+
+
+
+
+
+
+
+
+
+
 
