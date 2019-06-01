@@ -20,13 +20,15 @@ opt = parser.parse_args()
 # path = './ffmpeg'
 # plt.rcParams['animation.ffmpeg_path'] = path
 try:
-    prev_len = np.load('prev_list_len.npy').item()
+    prev_len = np.load('./prev_list_len.npy').item()
 except:
     print('No previous length (or error). Continuing...')
     prev_len = 0
 
 new_len = get_len()
 if prev_len != new_len or prev_len == 0:
+    
+    np.save('./prev_list_len.npy',new_len)
     
     t1 = time()
     
