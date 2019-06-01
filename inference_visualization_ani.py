@@ -14,6 +14,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--id', type=int,default=-1)
 parser.add_argument('--interv', type=int,default=1)
 parser.add_argument('--thresh', type=float,default=0.50)
+parser.add_argument('--smooth', type=int,default=1)
 opt = parser.parse_args()
 # path = '/anaconda3/pkgs/tensorflow-base-1.9.0-mkl_py36h70e0e9a_0/lib/python3.6/site-packages/tensorflow/contrib/ffmpeg'
 # path = './ffmpeg'
@@ -61,7 +62,7 @@ my_net.load_state_dict(torch.load(load_path))
 yhat = nn.Softmax()(my_net(data))[:,1]#.argmax(dim=1).cpu().data.numpy()
 yhat = (yhat > thresh)*1
 yhat = yhat.cpu().data.numpy()
-yhat = np.round(smooth(yhat,75))
+yhat = np.round(smooth(yhat,opt.smooth))
 
 # yhat = nn.Softmax()(my_net(data)).cpu().data.numpy()
 # yhat = smooth(yhat[:,1],smoothing) > thresh
