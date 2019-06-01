@@ -211,5 +211,6 @@ if (prev_len != new_len or prev_len == 0) or opt.force_update:
         m.append('inbox', '', imaplib.Time2Internaldate(time()), email.message_from_string(str(new_message)))
         print('Email sent.')
     except:
+        print('Email error.')
         pass
     
