@@ -8,6 +8,12 @@ from utils.sampler import ImbalancedDatasetSampler, smooth
 from get_email_csvs import return_last_csv
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import argparse, os, sys
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--id', type=int,default=-1)
+parser.add_argument('--interv', type=int,default=1)
+opt = parser.parse_args()
 # path = '/anaconda3/pkgs/tensorflow-base-1.9.0-mkl_py36h70e0e9a_0/lib/python3.6/site-packages/tensorflow/contrib/ffmpeg'
 # path = './ffmpeg'
 # plt.rcParams['animation.ffmpeg_path'] = path
@@ -18,7 +24,7 @@ load_path = './saved_models/test6.state'
 save_path = '/Users/AlexGain/Google Drive (Amplio)/Website/'
 
 ## hyperparams 1:
-id_ = -2
+id_ = opt.id
 thresh = 0.50
 smoothing = 1
 
@@ -148,25 +154,24 @@ class AnimatedScatter(object):
 # plt.legend()
 # plt.savefig('accelerometer.png',dpi=1000)
 
-interv = 1
 def update(num, line1,line2,lin3):
-    line1.set_offsets(np.array([np.arange(0,num*interv),A[:,0][:num*interv]]).T)
-    # line1.set_color(c=yhat[:num*interv:interv])
-    line2.set_offsets(np.array([np.arange(0,num*interv),A[:,1][:num*interv]]).T)
-    # line2.set_color(c=yhat[:num*interv:interv])
-    line3.set_offsets(np.array([np.arange(0,num*interv),A[:,2][:num*interv]]).T)
-    # line3.set_color(c=yhat[:num*interv:interv])
+    line1.set_offsets(np.array([np.arange(0,num*opt.interv),A[:,0][:num*opt.interv]]).T)
+    # line1.set_color(c=yhat[:num*opt.interv:opt.interv])
+    line2.set_offsets(np.array([np.arange(0,num*opt.interv),A[:,1][:num*opt.interv]]).T)
+    # line2.set_color(c=yhat[:num*opt.interv:opt.interv])
+    line3.set_offsets(np.array([np.arange(0,num*opt.interv),A[:,2][:num*opt.interv]]).T)
+    # line3.set_color(c=yhat[:num*opt.interv:opt.interv])
     return line1,line2,line3
 
-#A.shape[0]//interv
-ani = animation.FuncAnimation(fig, update, 20, fargs=[line1,line2,line3],
+#A.shape[0]//opt.interv
+ani = animation.FuncAnimation(fig, update, 400//opt.interv, fargs=[line1,line2,line3],
                               interval=1, blit=True)#, save_count=50)
 
 # Writer = animation.writers['ffmpeg_file']
 # writer = Writer(fps=60, bitrate=100)
 
 # writer = animation.FFMpegWriter(fps=600, metadata=dict(artist='Me'), bitrate=100)
-writer = animation.ImageMagickWriter(fps=500)
+writer = animation.ImageMagickWriter(fps=1000)
 
 # writer = Writer(fps=60, metadata=dict(artist='Me'), bitrate=100)
 
