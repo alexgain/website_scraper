@@ -13,6 +13,7 @@ import argparse, os, sys
 parser = argparse.ArgumentParser()
 parser.add_argument('--id', type=int,default=-1)
 parser.add_argument('--interv', type=int,default=1)
+parser.add_argument('--thresh', type=float,default=0.50)
 opt = parser.parse_args()
 # path = '/anaconda3/pkgs/tensorflow-base-1.9.0-mkl_py36h70e0e9a_0/lib/python3.6/site-packages/tensorflow/contrib/ffmpeg'
 # path = './ffmpeg'
