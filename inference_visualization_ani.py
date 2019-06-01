@@ -12,6 +12,8 @@ import matplotlib.animation as animation
 # path = './ffmpeg'
 # plt.rcParams['animation.ffmpeg_path'] = path
 
+t1 = time()
+
 load_path = './saved_models/test6.state'
 save_path = '/Users/AlexGain/Google Drive (Amplio)/Website/'
 
@@ -170,6 +172,7 @@ writer = animation.ImageMagickWriter(fps=500)
 
 ani.save('./accelerometer.gif', writer=writer)
 
-
+t2 = time()
+print('Time Elapsed:',(t2 - t1)/60,'minutes')
 
 
