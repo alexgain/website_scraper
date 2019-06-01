@@ -39,7 +39,7 @@ if (prev_len != new_len or prev_len == 0) or opt.force_update:
     
     ## hyperparams 1:
     id_ = opt.id
-    thresh = 0.50
+    thresh = opt.thresh
     smoothing = 1
     
     ## hyperparams 2:
