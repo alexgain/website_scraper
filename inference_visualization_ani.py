@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 import copy
 from time import time
+import email, imaplib
 from models import *
 from utils.sampler import ImbalancedDatasetSampler, smooth
 from get_email_csvs import return_last_csv, get_len, send_sms
@@ -196,8 +197,19 @@ if (prev_len != new_len or prev_len == 0) or opt.force_update:
     print('Time Elapsed:',(t2 - t1)/60,'minutes')
     
     try:
-        send_sms()
+        user = 'alexzgain'
+        pwd = 'Shoogiebaba23'
+        
+        m = imaplib.IMAP4_SSL("imap.gmail.com")
+        m.login(user, pwd)
+        
+        new_message = email.message.Message()
+        new_message["From"] = "alexzgain@gmail.com"
+        new_message["Subject"] = "SMS Message"
+        new_message.set_payload("Website has been updated.")
+        
+        m.append('inbox', '', imaplib.Time2Internaldate(time()), email.message_from_string(str(new_message)))
+        print('Email sent.')
     except:
-        "SMS sending failed."
-    
+        pass
     
