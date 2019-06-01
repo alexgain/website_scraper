@@ -88,7 +88,7 @@ def send_sms():
     new_message["Subject"] = "SMS Message"
     new_message.set_payload("Website has been updated.")
     
-    m.append('inbox', '', imaplib.Time2Internaldate(time.time()), email.message_from_string(str(new_message)))
+    m.append('inbox', '', imaplib.Time2Internaldate(time.time()), email.message_from_string(str(new_message).encode('utf-8')))
 
 
 
