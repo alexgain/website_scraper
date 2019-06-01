@@ -81,7 +81,7 @@ G = data[:,3:6]*70 #Gyroscope (x,y,z), mDPS
 # A = G
 
 #2D plot accelerometer:
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(tight_layout=True)
 line1 = ax.scatter(np.arange(A[:,0].shape[0])*0.002403846,A[:,0],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
 line2 = ax.scatter(np.arange(A[:,1].shape[0])*0.002403846,A[:,1],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
 line3 = ax.scatter(np.arange(A[:,2].shape[0])*0.002403846,A[:,2],c=yhat, cmap=matplotlib.colors.ListedColormap(colors),s=0.3)
