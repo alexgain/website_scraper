@@ -157,7 +157,7 @@ def update(num, line1,line2,lin3):
     return line1,line2,line3
 
 #A.shape[0]//interv
-ani = animation.FuncAnimation(fig, update, 100, fargs=[line1,line2,line3],
+ani = animation.FuncAnimation(fig, update, 1000, fargs=[line1,line2,line3],
                               interval=1, blit=True, save_count=50)
 
 # Writer = animation.writers['ffmpeg_file']
