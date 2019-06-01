@@ -195,9 +195,9 @@ if (prev_len != new_len or prev_len == 0) or opt.force_update:
     t2 = time()
     print('Time Elapsed:',(t2 - t1)/60,'minutes')
     
-    # try:
-    send_sms()
-    # except:
-    #     "SMS sending failed."
+    try:
+        send_sms()
+    except:
+        "SMS sending failed."
     
     
